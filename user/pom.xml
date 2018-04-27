@@ -21,5 +21,6 @@
 		<module>user-model</module>
 		<module>user-config</module>
 		<module>user-app</module>
+		<module>user-remote</module>
 	</modules>
 </project>

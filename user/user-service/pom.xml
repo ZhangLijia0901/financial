@@ -9,10 +9,28 @@
 		<artifactId>user</artifactId>
 		<version>${project.version}</version>
 	</parent>
+
 	<groupId>com.financial.user</groupId>
 	<artifactId>user-service</artifactId>
 	<packaging>jar</packaging>
+
+
 	<dependencies>
+		<dependency>
+			<groupId>com.financial.user</groupId>
+			<artifactId>user-dao</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.financial</groupId>
+			<artifactId>deps</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.financial</groupId>
+			<artifactId>common</artifactId>
+			<version>${project.version}</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<finalName>user-service</finalName>
