@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.lj</groupId>
-	<artifactId>cloud-parent</artifactId>
+	<groupId>com.financial</groupId>
+	<artifactId>financial</artifactId>
 	<packaging>pom</packaging>
 	<version>${project.version}</version>
 
@@ -47,16 +45,12 @@
 				</configuration>
 			</plugin>
 		</plugins>
-		<finalName>cloud-parent</finalName>
+		<finalName>financial</finalName>
 	</build>
 	<modules>
-		<module>cloud-zuul</module>
-		<module>cloud-register</module>
-		<module>cloud-admin</module>
-		<module>cloud-server-one</module>
-		<module>cloud-server-two</module>
-		<module>cloud-common</module>
-		<module>cloud-yw</module>
-		<module>cloud-config-server</module>
-	</modules>
+
+		<module>user</module>
+    <module>common</module>
+    <module>deps</module>
+  </modules>
 </project>
