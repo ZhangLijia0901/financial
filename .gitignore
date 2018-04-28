@@ -6,13 +6,16 @@
 /target/
 /.classpath 
 /.project
+.factorypath
 
 */.settings/
 */target/
 */.classpath
 */.project
+*/.factorypath
 
 */*/.classpath 
 */*/.project
 */*/.settings/*
 */*/target/*
+*/*/.factorypath

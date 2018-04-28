@@ -16,6 +16,9 @@
 		<java.version>1.8</java.version>
 		<project.version>0.0.1-SNAPSHOT</project.version>
 		<boot.admin.version>1.5.6</boot.admin.version>
+		<alibaba.druid.version>1.0.25</alibaba.druid.version>
+		<alibaba.fastjson.version>1.2.47</alibaba.fastjson.version>
+		<boot.mybatis.version>1.3.2</boot.mybatis.version>
 	</properties>
 
 	<dependencyManagement>
@@ -52,5 +55,6 @@
 		<module>user</module>
     <module>common</module>
     <module>deps</module>
+    <module>register-center</module>
   </modules>
 </project>

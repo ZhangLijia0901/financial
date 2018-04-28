@@ -1,0 +1,14 @@
+{
+	"properties": [
+		{
+			"name": "fastjson.date-format",
+			"type": "java.lang.String",
+			"description": "设置fastjson日期格式"
+		},
+		{
+			"name": "mapper.location",
+			"type": "java.lang.String",
+			"description": "mybatis mapper文件保存路径"
+		}
+	]
+}
