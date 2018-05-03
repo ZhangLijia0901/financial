@@ -19,11 +19,7 @@
 			<artifactId>user-service</artifactId>
 			<version>${project.version}</version>
 		</dependency>
-		<dependency>
-			<groupId>com.financial.user</groupId>
-			<artifactId>user-remote</artifactId>
-			<version>${project.version}</version>
-		</dependency>
+		
 
 	</dependencies>
 </project>

@@ -1,11 +1,13 @@
 package com.financial.common;
 
+import org.springframework.beans.factory.annotation.Value;
+
 public abstract class BaseController {
 
-//	@Value("${server.port}")
-//	protected String port;
-//	@Value("${spring.application.name}")
-//	protected String appName;
+	@Value("${server.port}")
+	protected String port;
+	@Value("${spring.application.name}")
+	protected String appName;
 
 	protected interface MAPPING_URL {
 		String TEST = "/test";

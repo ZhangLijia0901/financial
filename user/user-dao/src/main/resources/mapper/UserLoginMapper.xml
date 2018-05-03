@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.financial.user.mapper.UserLoginMapper" >
+  <resultMap id="BaseResultMap" type="com.financial.user.model.UserLogin" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="user_auth_id" property="userAuthId" jdbcType="INTEGER" />
+    <result column="auth_type" property="authType" jdbcType="VARCHAR" />
+    <result column="login_device_id" property="loginDeviceId" jdbcType="VARCHAR" />
+    <result column="login_time" property="loginTime" jdbcType="TIMESTAMP" />
+    <result column="login_ip" property="loginIp" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, user_id, user_auth_id, auth_type, login_device_id, login_time, login_ip
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from user_login
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from user_login
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.financial.user.model.UserLogin" >
+    insert into user_login (id, user_id, user_auth_id, 
+      auth_type, login_device_id, login_time, 
+      login_ip)
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{userAuthId,jdbcType=INTEGER}, 
+      #{authType,jdbcType=VARCHAR}, #{loginDeviceId,jdbcType=VARCHAR}, #{loginTime,jdbcType=TIMESTAMP}, 
+      #{loginIp,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.financial.user.model.UserLogin" >
+    insert into user_login
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="userAuthId != null" >
+        user_auth_id,
+      </if>
+      <if test="authType != null" >
+        auth_type,
+      </if>
+      <if test="loginDeviceId != null" >
+        login_device_id,
+      </if>
+      <if test="loginTime != null" >
+        login_time,
+      </if>
+      <if test="loginIp != null" >
+        login_ip,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="userAuthId != null" >
+        #{userAuthId,jdbcType=INTEGER},
+      </if>
+      <if test="authType != null" >
+        #{authType,jdbcType=VARCHAR},
+      </if>
+      <if test="loginDeviceId != null" >
+        #{loginDeviceId,jdbcType=VARCHAR},
+      </if>
+      <if test="loginTime != null" >
+        #{loginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="loginIp != null" >
+        #{loginIp,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.financial.user.model.UserLogin" >
+    update user_login
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="userAuthId != null" >
+        user_auth_id = #{userAuthId,jdbcType=INTEGER},
+      </if>
+      <if test="authType != null" >
+        auth_type = #{authType,jdbcType=VARCHAR},
+      </if>
+      <if test="loginDeviceId != null" >
+        login_device_id = #{loginDeviceId,jdbcType=VARCHAR},
+      </if>
+      <if test="loginTime != null" >
+        login_time = #{loginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="loginIp != null" >
+        login_ip = #{loginIp,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.financial.user.model.UserLogin" >
+    update user_login
+    set user_id = #{userId,jdbcType=INTEGER},
+      user_auth_id = #{userAuthId,jdbcType=INTEGER},
+      auth_type = #{authType,jdbcType=VARCHAR},
+      login_device_id = #{loginDeviceId,jdbcType=VARCHAR},
+      login_time = #{loginTime,jdbcType=TIMESTAMP},
+      login_ip = #{loginIp,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

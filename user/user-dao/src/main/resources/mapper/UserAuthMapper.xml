@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.financial.user.mapper.UserAuthMapper" >
+  <resultMap id="BaseResultMap" type="com.financial.user.model.UserAuth" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="auth_type" property="authType" jdbcType="VARCHAR" />
+    <result column="auth_nick" property="authNick" jdbcType="VARCHAR" />
+    <result column="auth_avatar_url" property="authAvatarUrl" jdbcType="VARCHAR" />
+    <result column="identifier" property="identifier" jdbcType="VARCHAR" />
+    <result column="credential" property="credential" jdbcType="VARCHAR" />
+    <result column="auth_date" property="authDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, user_id, auth_type, auth_nick, auth_avatar_url, identifier, credential, auth_date
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from user_auth
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from user_auth
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.financial.user.model.UserAuth" >
+    insert into user_auth (id, user_id, auth_type, 
+      auth_nick, auth_avatar_url, identifier, 
+      credential, auth_date)
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{authType,jdbcType=VARCHAR}, 
+      #{authNick,jdbcType=VARCHAR}, #{authAvatarUrl,jdbcType=VARCHAR}, #{identifier,jdbcType=VARCHAR}, 
+      #{credential,jdbcType=VARCHAR}, #{authDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.financial.user.model.UserAuth" >
+    insert into user_auth
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="authType != null" >
+        auth_type,
+      </if>
+      <if test="authNick != null" >
+        auth_nick,
+      </if>
+      <if test="authAvatarUrl != null" >
+        auth_avatar_url,
+      </if>
+      <if test="identifier != null" >
+        identifier,
+      </if>
+      <if test="credential != null" >
+        credential,
+      </if>
+      <if test="authDate != null" >
+        auth_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="authType != null" >
+        #{authType,jdbcType=VARCHAR},
+      </if>
+      <if test="authNick != null" >
+        #{authNick,jdbcType=VARCHAR},
+      </if>
+      <if test="authAvatarUrl != null" >
+        #{authAvatarUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="identifier != null" >
+        #{identifier,jdbcType=VARCHAR},
+      </if>
+      <if test="credential != null" >
+        #{credential,jdbcType=VARCHAR},
+      </if>
+      <if test="authDate != null" >
+        #{authDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.financial.user.model.UserAuth" >
+    update user_auth
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="authType != null" >
+        auth_type = #{authType,jdbcType=VARCHAR},
+      </if>
+      <if test="authNick != null" >
+        auth_nick = #{authNick,jdbcType=VARCHAR},
+      </if>
+      <if test="authAvatarUrl != null" >
+        auth_avatar_url = #{authAvatarUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="identifier != null" >
+        identifier = #{identifier,jdbcType=VARCHAR},
+      </if>
+      <if test="credential != null" >
+        credential = #{credential,jdbcType=VARCHAR},
+      </if>
+      <if test="authDate != null" >
+        auth_date = #{authDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.financial.user.model.UserAuth" >
+    update user_auth
+    set user_id = #{userId,jdbcType=INTEGER},
+      auth_type = #{authType,jdbcType=VARCHAR},
+      auth_nick = #{authNick,jdbcType=VARCHAR},
+      auth_avatar_url = #{authAvatarUrl,jdbcType=VARCHAR},
+      identifier = #{identifier,jdbcType=VARCHAR},
+      credential = #{credential,jdbcType=VARCHAR},
+      auth_date = #{authDate,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
