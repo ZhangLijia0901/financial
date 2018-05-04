@@ -207,4 +207,20 @@
       login_ip = #{loginIp,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  
+  <select id="selectList" parameterType="com.financial.user.model.User" resultMap="BaseResultMap">
+    select  * 
+    from    user
+    <where>
+        <if test="id!=null and id!=''">
+            and id = #{id}
+        </if>
+        <if test="nickName!=null and nickName!=''">
+            and nick_name like concat('%', #{nickName}, '%')
+        </if>
+        <if test="mobile!=null and mobile!=''">
+            and mobile like concat('%', #{mobile} ,'%')
+        </if>
+    </where>
+  </select>
 </mapper>
