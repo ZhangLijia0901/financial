@@ -2,6 +2,8 @@ package com.financial.user.service;
 
 import java.util.List;
 
+import com.financial.common.bean.response.CommonResponse;
+import com.financial.user.model.UserAuth;
 import com.financial.user.model.UserLogin;
 
 /**
@@ -12,10 +14,13 @@ import com.financial.user.model.UserLogin;
  */
 public interface UserLoginService {
 
-	/** 提交用户登录记录 */
+	/** 添加用户登录记录 */
 	void addUserLogin(UserLogin uesrLongin);
 
 	/** 查询用户登录记录 */
 	List<UserLogin> queryUserLogin(UserLogin uesrLogin);
+
+	/** 用户登录 */
+	CommonResponse userLogin(UserAuth userAuth);
 
 }

@@ -22,4 +22,6 @@ public class UserAuth {
 	private String credential;// 授权凭证
 	private Date authDate;// 授权时间
 
+	private UserLogin userLogin;// 用户登录记录
+
 }

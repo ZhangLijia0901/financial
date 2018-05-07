@@ -1,4 +1,4 @@
-package com.financial.common;
+package com.financial.common.controller;
 
 import org.springframework.beans.factory.annotation.Value;
 
@@ -10,6 +10,7 @@ public abstract class BaseController {
 	protected String appName;
 
 	protected interface MAPPING_URL {
+		String LOGIN = "/login";
 		String TEST = "/test";
 		String PROVIDER = "/provider";
 		String CONSUMER = "/consumer";

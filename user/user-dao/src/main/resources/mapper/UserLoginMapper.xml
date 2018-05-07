@@ -114,4 +114,20 @@
       login_ip = #{loginIp,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  
+  <select id="selectList" parameterType="com.financial.user.model.UserLogin" resultMap="BaseResultMap">
+    select  * 
+    from    user_login
+    <where>
+        <if test="id!=null and id!=''">
+            and id = #{id}
+        </if>
+        <if test="userId!=null and userId!=''">
+            and user_id = #{userId}
+        </if>
+        <if test="loginDeviceId !=null and loginDeviceId!=''">
+            and login_device_id = #{loginDeviceId}
+        </if>
+    </where>
+  </select>
 </mapper>

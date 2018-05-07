@@ -1,12 +1,26 @@
 package com.financial.common;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * 
  * @Description: 常量
  * @author: 张礼佳
  * @date: 2018年5月3日 上午9:53:40
  */
-public interface Constants {
+public abstract class Constants {
+
+	/** 授权类型 与 描述 */
+	public static final Map<String, String> AUTH_TYPE_MESSAGE = new HashMap<>();
+
+	static {
+		AUTH_TYPE_MESSAGE.put(AUTH_TYPE.MOBILE, "手机号");
+		AUTH_TYPE_MESSAGE.put(AUTH_TYPE.EMAIL, "邮箱号");
+		AUTH_TYPE_MESSAGE.put(AUTH_TYPE.WECHAT, "微信");
+		AUTH_TYPE_MESSAGE.put(AUTH_TYPE.QQ, "QQ");
+		AUTH_TYPE_MESSAGE.put(AUTH_TYPE.ALIPAY, "支付宝");
+	}
 
 	/** 数据状态 */
 	interface STATUS {
