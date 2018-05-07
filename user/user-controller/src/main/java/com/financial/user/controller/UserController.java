@@ -9,7 +9,6 @@ import com.financial.common.bean.response.CommonResponse;
 import com.financial.common.controller.BaseController;
 import com.financial.user.model.UserAuth;
 import com.financial.user.service.UserLoginService;
-import com.financial.user.service.UserService;
 import com.netflix.client.http.HttpRequest;
 
 @RestController
