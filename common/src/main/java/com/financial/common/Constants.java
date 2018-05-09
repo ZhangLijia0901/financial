@@ -13,6 +13,7 @@ public abstract class Constants {
 
 	/** 授权类型 与 描述 */
 	public static final Map<String, String> AUTH_TYPE_MESSAGE = new HashMap<>();
+	public static final String CHARSET_NAME = "utf-8";
 
 	static {
 		AUTH_TYPE_MESSAGE.put(AUTH_TYPE.MOBILE, "手机号");
