@@ -11,6 +11,7 @@
     <result column="birthday" property="birthday" jdbcType="TIMESTAMP" />
     <result column="nation" property="nation" jdbcType="VARCHAR" />
     <result column="mobile" property="mobile" jdbcType="CHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR"/>
     <result column="address" property="address" jdbcType="VARCHAR" />
     <result column="STATUS" property="status" jdbcType="CHAR" />
     <result column="register_time" property="registerTime" jdbcType="TIMESTAMP" />
@@ -19,7 +20,7 @@
     <result column="login_ip" property="loginIp" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, nick_name, avatar_url, NAME, idcard, sex, birthday, nation, mobile, address, 
+    id, nick_name, avatar_url, NAME, idcard, sex, birthday, nation, mobile, email, address, 
     STATUS, register_time, register_ip, login_time, login_ip
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
@@ -35,16 +36,16 @@
   <insert id="insert" parameterType="com.financial.user.model.User" >
     insert into user (id, nick_name, avatar_url, 
       NAME, idcard, sex, birthday, 
-      nation, mobile, address, 
+      nation, mobile, email, address, 
       STATUS, register_time, register_ip, 
       login_time, login_ip)
     values (#{id,jdbcType=INTEGER}, #{nickName,jdbcType=VARCHAR}, #{avatarUrl,jdbcType=VARCHAR}, 
       #{name,jdbcType=VARCHAR}, #{idcard,jdbcType=VARCHAR}, #{sex,jdbcType=CHAR}, #{birthday,jdbcType=TIMESTAMP}, 
-      #{nation,jdbcType=VARCHAR}, #{mobile,jdbcType=CHAR}, #{address,jdbcType=VARCHAR}, 
+      #{nation,jdbcType=VARCHAR}, #{mobile,jdbcType=CHAR}, #{email,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
       #{status,jdbcType=CHAR}, #{registerTime,jdbcType=TIMESTAMP}, #{registerIp,jdbcType=VARCHAR}, 
       #{loginTime,jdbcType=TIMESTAMP}, #{loginIp,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.financial.user.model.User" >
+  <insert id="insertSelective" parameterType="com.financial.user.model.User" keyColumn="id" useGeneratedKeys="true">
     insert into user
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -73,6 +74,9 @@
       </if>
       <if test="mobile != null" >
         mobile,
+      </if>
+      <if test="email != null">
+        email,
       </if>
       <if test="address != null" >
         address,
@@ -121,6 +125,9 @@
       <if test="mobile != null" >
         #{mobile,jdbcType=CHAR},
       </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR}
+      </if>
       <if test="address != null" >
         #{address,jdbcType=VARCHAR},
       </if>
@@ -168,6 +175,9 @@
       <if test="mobile != null" >
         mobile = #{mobile,jdbcType=CHAR},
       </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR}
+      </if>
       <if test="address != null" >
         address = #{address,jdbcType=VARCHAR},
       </if>
@@ -199,6 +209,7 @@
       birthday = #{birthday,jdbcType=TIMESTAMP},
       nation = #{nation,jdbcType=VARCHAR},
       mobile = #{mobile,jdbcType=CHAR},
+      email = #{email,jdbcType=VARCHAR},
       address = #{address,jdbcType=VARCHAR},
       STATUS = #{status,jdbcType=CHAR},
       register_time = #{registerTime,jdbcType=TIMESTAMP},

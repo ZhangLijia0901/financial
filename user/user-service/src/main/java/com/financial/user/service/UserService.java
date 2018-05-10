@@ -2,6 +2,7 @@ package com.financial.user.service;
 
 import java.util.List;
 
+import com.financial.common.bean.response.CommonResponse;
 import com.financial.user.model.User;
 
 /**
@@ -26,4 +27,7 @@ public interface UserService {
 
 	/** 查询用户列表 */
 	List<User> queryList(User user);
+
+	/** 注册用户 */
+	CommonResponse register(User user);
 }

@@ -6,6 +6,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.financial.common.bean.response.CommonResponse;
 import com.financial.user.mapper.UserMapper;
 import com.financial.user.model.User;
 import com.financial.user.service.UserService;
@@ -40,6 +41,11 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public List<User> queryList(User user) {
 		return userMapper.selectList(user);
+	}
+
+	@Override
+	public CommonResponse register(User user) {
+		return null;
 	}
 
 }

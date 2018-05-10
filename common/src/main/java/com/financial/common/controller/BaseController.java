@@ -11,6 +11,8 @@ public abstract class BaseController {
 
 	protected interface MAPPING_URL {
 		String LOGIN = "/login";
+		String REGISTER= "/register";
+		
 		String TEST = "/test";
 		String PROVIDER = "/provider";
 		String CONSUMER = "/consumer";
