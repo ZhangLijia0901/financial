@@ -1,6 +1,7 @@
 package com.financial.user.model;
 
 import java.util.Date;
+import java.util.List;
 
 import lombok.Data;
 
@@ -28,8 +29,9 @@ public class User {
 	private Date registerTime;// 注册时间
 	private String registerIp;// 注册IP
 	private Date loginTime;// 上次登录时间
-	private String loginIp;// 删除登录IP
+	private String loginIp;// 上次登录IP
 
 	private String password;// 密码
 
+	private List<UserAuth> userAuths;// 用户授权
 }

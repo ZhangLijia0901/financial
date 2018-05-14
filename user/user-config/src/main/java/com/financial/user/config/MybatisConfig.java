@@ -19,7 +19,7 @@ import com.alibaba.druid.pool.DruidDataSource;
 @MapperScan(basePackages = { MybatisConfig.MAPPER_PACKAGE })
 public class MybatisConfig {
 
-	protected final static String MAPPER_PACKAGE = "com.financial.user.dao";
+	protected final static String MAPPER_PACKAGE = "com.financial.user.mapper";
 
 	@Value("${mapper.location}")
 	private String mapperLocation;

@@ -2,12 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.financial.user.mapper.RoleAuthMapper">
 	<delete id="deleteByPrimaryKey">
-		delete    from role_auth
-		where     auth_id = #{authId}
-		and       role_id = #{roleId}
+		delete from role_auth
+		where auth_id = #{authId}
+		and   role_id = #{roleId}
 	</delete>
-	<insert id="insert"
-		parameterType="com.financial.user.model.RoleAuthKey">
+	<insert id="insert">
 		insert into role_auth (auth_id, role_id)
 		values    (#{authId}, #{roleId})
 	</insert>

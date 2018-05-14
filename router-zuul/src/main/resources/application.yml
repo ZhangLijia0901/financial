@@ -1,0 +1,23 @@
+logging:
+  level:
+    root: debug
+spring:
+  application:
+    name: router-zuul
+server:
+  port: 8080
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:9000/eureka/
+      
+zuul:
+  retryable: false
+  routes:
+    api-register: 
+      path: /register/**
+      service-id: register-center
+    api-user:
+      path: /user/**
+      service-id: fin-user
+    

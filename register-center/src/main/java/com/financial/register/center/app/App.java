@@ -1,4 +1,4 @@
-package com.financial.register.center;
+package com.financial.register.center.app;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,3 +1,6 @@
+logging:
+  level:
+    root: debug
 spring:
   application:
     name: fin-user
@@ -9,6 +12,9 @@ spring:
 server:
   port: 9010
 eureka:
+  instance:
+    lease-expiration-duration-in-seconds: 30
+    lease-renewal-interval-in-seconds: 10
   client:
     service-url:
       defaultZone: http://127.0.0.1:9000/eureka/

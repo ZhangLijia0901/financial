@@ -8,6 +8,9 @@ logging:
     root: info
   file: F:/github/logs/financial/register-center.log
 eureka:
+  server:
+    enable-self-preservation: false
+    eviction-interval-timer-in-ms: 4000
   instance:
     hostname: 127.0.0.1
   client:

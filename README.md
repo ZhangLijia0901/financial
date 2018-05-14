@@ -1,8 +1,8 @@
 # financial
 
 
+    网关(router-zuul)    8080
     注册中心(register)  9000
-    网关(zuul)        9004
     公共平台(common)    9005
     文件(files)       9006
     

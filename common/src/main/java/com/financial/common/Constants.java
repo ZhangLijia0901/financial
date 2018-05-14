@@ -26,7 +26,7 @@ public abstract class Constants {
 	}
 
 	/** 数据状态 */
-	interface STATUS {
+	public interface STATUS {
 		/** 启用 */
 		String ENABLE = "00";
 		/** 停用 */
@@ -34,7 +34,7 @@ public abstract class Constants {
 	}
 
 	/** 授权类型 */
-	interface AUTH_TYPE {
+	public interface AUTH_TYPE {
 		/** 手机 */
 		String MOBILE = "10";
 		/** 邮箱 */

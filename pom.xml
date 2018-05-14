@@ -56,5 +56,6 @@
     <module>common</module>
     <module>deps</module>
     <module>register-center</module>
-  </modules>
+    <module>router-zuul</module>
+	</modules>
 </project>

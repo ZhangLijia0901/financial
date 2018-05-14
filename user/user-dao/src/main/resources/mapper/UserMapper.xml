@@ -45,7 +45,7 @@
       #{status,jdbcType=CHAR}, #{registerTime,jdbcType=TIMESTAMP}, #{registerIp,jdbcType=VARCHAR}, 
       #{loginTime,jdbcType=TIMESTAMP}, #{loginIp,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.financial.user.model.User" keyColumn="id" useGeneratedKeys="true">
+  <insert id="insertSelective" parameterType="com.financial.user.model.User" keyProperty="id" useGeneratedKeys="true">
     insert into user
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
