@@ -14,6 +14,7 @@ public abstract class Constants {
 	/** 授权类型 与 描述 */
 	public static final Map<String, String> AUTH_TYPE_MESSAGE = new HashMap<>();
 	public static final String CHARSET_NAME = "utf-8";
+	public static final String FILTER_PACKAGE = "com.financial.common.filter";
 	public static final String PRIVATE_KEY = "privateKey";
 	public static final String PUBLIC_KEY = "publicKey";
 

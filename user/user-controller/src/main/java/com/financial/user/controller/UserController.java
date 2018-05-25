@@ -1,7 +1,5 @@
 package com.financial.user.controller;
 
-import java.util.Enumeration;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -16,6 +14,7 @@ import com.financial.common.bean.response.CommonResponse;
 import com.financial.common.controller.BaseController;
 import com.financial.user.model.User;
 import com.financial.user.model.UserAuth;
+import com.financial.user.model.UserLogin;
 import com.financial.user.service.UserLoginService;
 import com.financial.user.service.UserService;
 
@@ -31,24 +30,20 @@ public class UserController extends BaseController {
 
 	@PostMapping(value = { MAPPING_URL.LOGIN })
 	public CommonResponse login(HttpServletRequest request, UserAuth userAuth) {
-
+		
+		if (userAuth != null) {
+			UserLogin userLogin = new UserLogin();
+			userLogin.setLoginIp(getOriginalIp(request));
+			userAuth.setUserLogin(userLogin);
+		}
 		return userLoginService.userLogin(userAuth);
 	}
 
 	@GetMapping(value = { MAPPING_URL.REGISTER })
 	@PostMapping(value = { MAPPING_URL.REGISTER })
 	public CommonResponse register(HttpServletRequest request, HttpServletResponse response, User user) {
-		response.setCharacterEncoding(Constants.CHARSET_NAME);
-		Enumeration<String> headerNames = request.getHeaderNames();
-		while (headerNames.hasMoreElements()) {
-			String headerName = headerNames.nextElement();
-			Enumeration<String> headers = request.getHeaders(headerName);
-			System.err.print(headerName + " ： ");
-			while (headers.hasMoreElements()) {
-				System.err.print(headers.nextElement() + ", ");
-			}
-			System.err.println();
-		}
+		if (user != null)
+			user.setRegisterIp(getOriginalIp(request));
 		return userService.register(user);
 	}
 
