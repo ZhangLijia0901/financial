@@ -18,6 +18,22 @@
 	</properties>
 	<dependencies>
 		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-eureka</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-feign</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-hystrix</artifactId>
+		</dependency>
+
+
+		<dependency>
 			<groupId>com.financial.user</groupId>
 			<artifactId>user-controller</artifactId>
 			<version>${project.version}</version>
@@ -28,5 +44,11 @@
 			<artifactId>user-config</artifactId>
 			<version>${project.version}</version>
 		</dependency>
+
+
+
+
+
+
 	</dependencies>
 </project>

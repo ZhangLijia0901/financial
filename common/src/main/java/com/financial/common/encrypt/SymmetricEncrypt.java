@@ -5,7 +5,6 @@ import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
-import java.security.Security;
 import java.security.spec.InvalidKeySpecException;
 
 import javax.crypto.BadPaddingException;
@@ -19,8 +18,6 @@ import javax.crypto.spec.DESKeySpec;
 import javax.crypto.spec.DESedeKeySpec;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
-
-import org.bouncycastle.jce.provider.BouncyCastleProvider;
 
 import com.financial.common.Constants;
 
@@ -259,7 +256,7 @@ public final class SymmetricEncrypt {
 		private static byte[] encrypt(byte[] src, byte[] key, byte[] iv, EncryptType encryptType) {
 			try {
 				// 添加一个安全提供者
-				Security.addProvider(new BouncyCastleProvider());
+//				Security.addProvider(new BouncyCastleProvider());
 				// 获得密钥
 				DESedeKeySpec desKey = new DESedeKeySpec(key);
 				// 创建一个密钥工厂，然后用它把DESKeySpec转化
@@ -307,7 +304,7 @@ public final class SymmetricEncrypt {
 		private static byte[] decrypt(byte[] src, byte[] key, byte[] iv, EncryptType encryptType) {
 			try {
 				// 添加一个安全提供者
-				Security.addProvider(new BouncyCastleProvider());
+//				Security.addProvider(new BouncyCastleProvider());
 				// 获得密钥
 				DESedeKeySpec desKey = new DESedeKeySpec(key);
 				// 创建一个密钥工厂，然后用它把DESKeySpec转化

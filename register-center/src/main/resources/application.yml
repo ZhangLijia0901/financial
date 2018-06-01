@@ -5,7 +5,7 @@ server:
   port: 9000
 logging:
   level:
-    root: info
+    root: debug
   file: F:/github/logs/financial/register-center.log
 eureka:
   server:

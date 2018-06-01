@@ -58,9 +58,10 @@ public class UserServiceImpl implements UserService {
 	public CommonResponse register(User user) {
 		if (user == null)
 			return new CommonResponse("9999", "用户信息空", null);
-		if (StringUtils.isEmpty(user.getMobile()) && StringUtils.isEmpty(user.getEmail()))
+		if (StringUtils.isEmpty(user.getMobile()) && StringUtils.isEmpty(user.getEmail())
+				&& user.getUserAuths() == null)
 			return new CommonResponse("9999", "手机号、邮箱号不可同空", null);
-		if (StringUtils.isEmpty(user.getPassword()))
+		if (StringUtils.isEmpty(user.getPassword()) && user.getUserAuths() == null)
 			return new CommonResponse("9999", "登录凭证不可为空", null);
 
 		user.setRegisterTime(new Date());// 注册时间

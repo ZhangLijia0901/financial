@@ -1,4 +1,4 @@
-package com.financial.user.config;
+package com.financial.common.config;
 
 import javax.sql.DataSource;
 
@@ -16,10 +16,8 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import com.alibaba.druid.pool.DruidDataSource;
 
 @Configuration
-@MapperScan(basePackages = { MybatisConfig.MAPPER_PACKAGE })
+@MapperScan(basePackages = { com.financial.user.config.MybatisConfig.MAPPER_PACKAGE })
 public class MybatisConfig {
-
-	public final static String MAPPER_PACKAGE = "com.financial.user.mapper";
 
 	@Value("${mapper.location}")
 	private String mapperLocation;
