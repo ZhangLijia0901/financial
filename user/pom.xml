@@ -9,18 +9,57 @@
 		<version>${project.version}</version>
 	</parent>
 
+	<packaging>jar</packaging>
 	<artifactId>user</artifactId>
 
-	<packaging>pom</packaging>
 	<dependencies>
+
+		<dependency>
+			<groupId>com.financial</groupId>
+			<artifactId>deps</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.financial</groupId>
+			<artifactId>common</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>druid</artifactId>
+			<version>${alibaba.druid.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-configuration-processor</artifactId>
+			<optional>true</optional>
+		</dependency>
+
+		<dependency>
+			<groupId>org.mybatis.spring.boot</groupId>
+			<artifactId>mybatis-spring-boot-starter</artifactId>
+			<version>${boot.mybatis.version}</version>
+		</dependency>
+
 	</dependencies>
-	<modules>
-		<module>user-dao</module>
-		<module>user-service</module>
-		<module>user-controller</module>
-		<module>user-model</module>
-		<module>user-config</module>
-		<module>user-app</module>
-		<module>user-remote</module>
-	</modules>
+	
+	<build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <fork>true</fork>
+                    <useTestClasspath>false</useTestClasspath>
+                </configuration>
+            </plugin>
+        </plugins>
+        <finalName>user</finalName>
+    </build>
 </project>

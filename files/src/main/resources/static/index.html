@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<style type="text/css">
+#files_show_list {
+	width: 400px;
+	margin: 0 auto;
+}
+
+#add_file, #submit_file {
+    margin: 0 auto;
+    display: inline-block;
+	width: 50px; 
+	height: 50px;
+	border: 1px solid red;
+	line-height: 50px;
+	text-align: center;
+	cursor: pointer;
+}
+
+.file {
+    width: 150px; 
+    height: 50px;
+    border: 1px solid red;
+    margin: 3px 10px;
+    display: inline-block;
+    line-height: 50px;
+    text-align: center;
+    cursor: pointer;
+}
+</style>
+</head>
+<body>
+	<div id="add_file">+</div>
+	<div id="submit_file">提交</div>
+	<div id="files_show_list">
+	</div>
+	<div id="files_hide_list" style="display: none;"></div>
+</body>
+
+<script type="text/javascript" src="js/jquery-3.3.1.js"></script>
+
+<script type="text/javascript">
+	$(function() {
+		$('#add_file').on({
+			'click' : function() {
+				var id = getuuid();
+				var fileInputContext = "<input type='file' id='" + id + "' accept='.*'/>";
+				$("#files_hide_list").append(fileInputContext);
+				$('#' + id).click();
+			}
+		});
+		
+		$('#files_show_list').on('click', '.file', function(){
+			var his = $(this);
+			var id = his.attr('file-id');
+			$('#' + id).click();
+		});
+
+		$('#files_hide_list').on('change', "input", function() {
+			var his = $(this);
+			var filePath = his.val();
+			var id = his.attr('id');
+			if(!filePath){
+				$('#' + id).remove();
+				$('[file-id="' + id + '"]').remove();
+				return;
+			}
+			var fileName = filePath.substr(filePath.lastIndexOf('\\') + 1);
+			var divContext = "<div file-id='" + id + "' class='file'>" + fileName + "</div>";
+			$('#files_show_list').prepend(divContext);
+		});
+		
+		$('#submit_file').on('click', function(){
+		    var formData = new FormData();
+		    var files = $('#files_hide_list input');
+		    for(var i = 0; i < files.length; i++){
+		        formData.append("file", files[i].files[0]);
+		    }
+		    
+		    $.ajax({
+	            url: '/files/a/b/c/d/e/f/g',
+	            type: 'POST',
+	            data: formData,
+	            processData: false,
+	            contentType: false,
+	            success: function (msg) {
+	                alert(msg);
+	            }
+	        });
+		});
+	});
+
+	function getuuid() {
+		return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g,
+				function(c) {
+					var r = Math.random() * 16 | 0, v = c == 'x' ? r
+							: (r & 0x3 | 0x8);
+					return v.toString(16);
+				});
+	}
+</script>
+</html>

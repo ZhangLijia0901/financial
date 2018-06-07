@@ -1,0 +1,23 @@
+logging:
+  level:
+    root: info
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: x5
+  
+#eureka:
+#  instance:
+#    lease-expiration-duration-in-seconds: 30
+#    lease-renewal-interval-in-seconds: 10
+#  client:
+#    service-url:
+#      defaultZone: http://127.0.0.1:9000/eureka/
+mapper:
+  location: classpath*:/mapper/*.xml
+fastjson:
+  dateFormat: yyyy-MM-dd HH:mm:ss
+  
+  

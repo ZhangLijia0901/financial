@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.financial</groupId>
 	<artifactId>financial</artifactId>
@@ -37,26 +39,14 @@
 		</dependencies>
 	</dependencyManagement>
 
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-				<configuration>
-					<fork>true</fork>
-					<useTestClasspath>false</useTestClasspath>
-				</configuration>
-			</plugin>
-		</plugins>
-		<finalName>financial</finalName>
-	</build>
-	<modules>
 
+	<modules>
 		<module>user</module>
-    <module>common</module>
-    <module>deps</module>
-    <module>register-center</module>
-    <module>router-zuul</module>
-    <module>common-app</module>
+		<module>common</module>
+		<module>deps</module>
+		<module>register-center</module>
+		<module>router-zuul</module>
+		<module>common-app</module>
+		<module>files</module>
 	</modules>
 </project>
