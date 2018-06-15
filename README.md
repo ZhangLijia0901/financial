@@ -2,7 +2,7 @@
 
 
     网关(router-zuul)    8080
-    注册中心(register)  9000
+    注册中心(register-center)  9000
     公共平台(common)    9005
     文件(files)       9006
     

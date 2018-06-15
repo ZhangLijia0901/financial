@@ -9,9 +9,15 @@ public abstract class BaseController {
 	@Value("${spring.application.name}")
 	protected String appName;
 
-	protected interface MAPPING_URL {
+	protected static interface MAPPING_URL {
+		String FILE_TREE="fileTree";
+		
+		
 		String LOGIN = "/login";
 		String REGISTER = "/register";
+		String ALL = "/**";
+		String TOKEN = "/{token}";
+		String DOWN = "/down";
 
 		String TEST = "/test";
 		String TEST1 = "/test1";
@@ -20,5 +26,4 @@ public abstract class BaseController {
 		String CONSUMER = "/consumer";
 	}
 
-	
 }

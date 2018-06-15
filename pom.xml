@@ -48,5 +48,6 @@
 		<module>router-zuul</module>
 		<module>common-app</module>
 		<module>files</module>
+		<module>source</module>
 	</modules>
 </project>

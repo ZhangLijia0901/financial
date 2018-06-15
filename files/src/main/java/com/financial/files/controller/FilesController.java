@@ -25,6 +25,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.financial.common.controller.BaseController;
 import com.financial.common.file.FileUtils;
 import com.financial.files.model.FileInfo;
 import com.financial.files.service.FileInfoService;
@@ -34,7 +35,7 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 @RequestMapping("files")
 @Slf4j
-public class FilesController {
+public class FilesController extends BaseController {
 
 	@Value("${files.path}")
 	private String filePath;
@@ -89,7 +90,7 @@ public class FilesController {
 
 	}
 
-	@GetMapping(value = { "/{token}" })
+	@GetMapping(value = { MAPPING_URL.TOKEN })
 	public void online(HttpServletRequest request, HttpServletResponse response, @PathVariable("token") String token) {
 		// 根据 token 查询 文件路径
 		FileInfo fileInfo = fileInfoService.getFileInfoByToken(token);
@@ -101,14 +102,14 @@ public class FilesController {
 		online(request, response);
 	}
 
-	@GetMapping(value = { "/**" })
+	@GetMapping(value = { MAPPING_URL.ALL })
 	public void online(HttpServletRequest request, HttpServletResponse response) {
 		// 根据 request 获取文件路径
 		String path = request.getRequestURI().replaceFirst("/files/", "");
 		download(response, filePath + path, null, "inline; ");
 	}
 
-	@GetMapping(value = { "/down/{token}" })
+	@GetMapping(value = { MAPPING_URL.DOWN + MAPPING_URL.TOKEN })
 	public void download(HttpServletRequest request, HttpServletResponse response,
 			@PathVariable("token") String token) {
 		// 根据 token 查询 文件路径
@@ -121,7 +122,7 @@ public class FilesController {
 		download(request, response);
 	}
 
-	@GetMapping(value = { "/down/**" })
+	@GetMapping(value = { MAPPING_URL.DOWN + MAPPING_URL.ALL })
 	public void download(HttpServletRequest request, HttpServletResponse response) {
 		// 根据 request 获取文件路径
 		String path = request.getRequestURI().replaceFirst("/files/down/", "");
@@ -158,7 +159,7 @@ public class FilesController {
 				response.setContentType(file.toURI().toURL().openConnection().getContentType());
 			else
 				response.setContentType("application/x-msdownload");
-			
+
 			FileUtils.isToOs(is, os);// 输入流中数据写入输出流
 			log.debug("---------------> 下载文件 end  <---------------");
 		} catch (FileNotFoundException e) {
