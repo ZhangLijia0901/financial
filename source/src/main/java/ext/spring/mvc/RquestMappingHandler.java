@@ -21,6 +21,10 @@ public class RquestMappingHandler {
 			Object bean = beanFactory.getBean(beanName);
 			if (!isHandler(bean))
 				return;
+			
+			RequestMapping requestMapping = BeanFactory.getAnnotation(bean.getClass(), RequestMapping.class);
+			
+			
 		});
 	}
 
