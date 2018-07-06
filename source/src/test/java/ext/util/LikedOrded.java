@@ -1,6 +1,6 @@
 package ext.util;
 
-import ext.spring.bean.DefaultBeanFactory;
+import ext.spring.boot.BootStart.BootTomcat;
 
 //import redis.clients.jedis.Jedis;
 
@@ -62,11 +62,14 @@ public class LikedOrded {
 //		}
 //	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 
-		DefaultBeanFactory beanFactory = new DefaultBeanFactory();
-		beanFactory.scan("test.test");
-		System.err.println();
+//		DefaultBeanFactory beanFactory = new DefaultBeanFactory();
+//		beanFactory.scan("test.test");
+//		System.err.println();
+
+		BootTomcat tomcat = new BootTomcat();
+		tomcat.start();
 
 //		jedis.del("lock");
 

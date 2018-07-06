@@ -29,11 +29,13 @@ public interface BeanFactory {
 		T ann = annotatedElement.getAnnotation(annotationType);
 		if (ann != null)
 			return ann;
-		Annotation[] annotations = annotatedElement.getAnnotations();
-		for (Annotation annotation : annotations) {
-			if (annotation.getClass().getName().startsWith("java.lang"))
+		for (Annotation annotation : annotatedElement.getAnnotations()) {
+
+			if (annotation.annotationType().getName().startsWith("java.lang.annotation"))
 				continue;
-			getAnnotation(annotation.getClass(), annotationType);
+			ann = getAnnotation(annotation.annotationType(), annotationType);
+			if (ann != null)
+				return ann;
 		}
 
 		return null;
