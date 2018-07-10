@@ -15,8 +15,13 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class CommonResponse {
 
-	private String respCode = "0000";
-	private String respMsg = "SUCCESS";
+	public static String SUCCESS_CODE = "0000";
+	public static String SUCCESS_MSG = "SUCCESS";
+
+	public static String ERROR_CODE = "9999";
+
+	private String respCode = SUCCESS_CODE;
+	private String respMsg = SUCCESS_MSG;
 
 	private Object data;
 

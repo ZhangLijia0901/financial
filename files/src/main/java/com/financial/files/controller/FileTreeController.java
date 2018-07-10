@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.financial.common.bean.response.CommonResponse;
 import com.financial.common.controller.BaseController;
+import com.financial.common.controller.BaseController.MAPPING_URL;
 import com.financial.files.service.FileTreeSerice;
 
 /**
@@ -22,7 +23,7 @@ import com.financial.files.service.FileTreeSerice;
  * @date: 2018年6月8日 上午11:04:11
  */
 @Controller
-@RequestMapping(value = { "fileTree" })
+@RequestMapping(value = { MAPPING_URL.FILE_DIR })
 public class FileTreeController extends BaseController {
 
 	@Value("${files.path}")
@@ -34,7 +35,7 @@ public class FileTreeController extends BaseController {
 	@GetMapping(MAPPING_URL.ALL)
 	@ResponseBody
 	public CommonResponse fileTree(HttpServletRequest request, HttpServletResponse response) {
-		String currentPath = request.getRequestURI().replaceFirst("/fileTree", "");
+		String currentPath = request.getRequestURI().replaceFirst(MAPPING_URL.FILE_DIR, "");
 		return fileTreeSerice.getFileListByRootPath(filePath, currentPath);
 
 	}

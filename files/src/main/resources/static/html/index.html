@@ -41,7 +41,7 @@
 	<div id="files_hide_list" style="display: none;"></div>
 </body>
 
-<script type="text/javascript" src="js/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="../js/jquery-3.3.1.js"></script>
 
 <script type="text/javascript">
 	$(function() {
@@ -82,14 +82,18 @@
 		    }
 		    
 		    $.ajax({
-	            url: '/files/a/b/c/d/e/f/g',
+	            url: '/files/x/z/y',
 	            type: 'POST',
 	            data: formData,
 	            processData: false,
 	            contentType: false,
 	            success: function (msg) {
 	                alert(msg);
+	            },
+	            error: function(msg){
+	            	console.info(msg);
 	            }
+		  
 	        });
 		});
 	});

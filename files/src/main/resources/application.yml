@@ -2,6 +2,7 @@ logging:
   level:
     root: info
     com.financial: debug
+    org.thymeleaf: debug
 spring:
   application:
     name: fin-files
@@ -10,6 +11,13 @@ spring:
     url: jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&characterEncoding=utf-8
     username: root
     password: x5
+  thymeleaf:
+    cache: false
+    encoding: UTF-8
+    prefix: classpath:/static/
+    suffix: .html
+    mode: HTML5
+    
     
 #eureka:
 #  instance:
@@ -21,8 +29,10 @@ spring:
 server:
   port: 9006
 files:
-  path: F:/files/
+  path: F:/files
 mapper:
   location: classpath*:/mapper/*.xml
 fastjson:
   dateFormat: yyyy-MM-dd HH:mm:ss
+  
+  

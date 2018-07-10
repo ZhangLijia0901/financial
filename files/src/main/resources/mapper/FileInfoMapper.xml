@@ -57,10 +57,10 @@
 				#{fileName,jdbcType=VARCHAR},
 			</if>
 			<if test="fileSize != null">
-				#{fileSize,jdbcType=VARCHAR}
+				#{fileSize,jdbcType=VARCHAR},
 			</if>
 			<if test="userId != null">
-				#{userId, jdbcType=INTEGER}
+				#{userId, jdbcType=INTEGER},
 			</if>
 			<if test="uploadTime != null">
 				#{uploadTime,jdbcType=TIMESTAMP}
@@ -102,6 +102,12 @@
         select  *
         from    file_info
         where   token = #{token}
+    </select>
+    
+      <select id="getByPath" resultMap="BaseResultMap">
+        select  *
+        from    file_info
+        where   path_name = #{path}
     </select>
 
 </mapper>

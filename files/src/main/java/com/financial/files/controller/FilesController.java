@@ -43,7 +43,7 @@ public class FilesController extends BaseController {
 	@Autowired
 	private FileInfoService fileInfoService;
 
-	@PostMapping("/**")
+	@PostMapping(MAPPING_URL.ALL)
 	@ResponseBody
 	public String upload(HttpServletRequest request, HttpServletResponse response) {
 		log.debug("------------------> 上传文件 begin <------------------");
@@ -55,9 +55,11 @@ public class FilesController extends BaseController {
 		if (files == null || files.size() == 0)
 			return "请求中不存在文件";
 
-		String path = request.getRequestURI()
-				.replaceFirst(request.getRequestURI().indexOf("/files/") != -1 ? "/files/" : "/files", "");// 获取存储目录
+		String path = request.getRequestURI().replaceFirst("/files", "");// 获取存储目录
 		path = filePath + path;
+		if (!path.endsWith("/"))
+			path += "/";
+
 		File file = new File(path);
 		if (!file.exists() || !file.isDirectory()) // 目录不存在创建目录
 			file.mkdirs();
@@ -66,9 +68,8 @@ public class FilesController extends BaseController {
 			OutputStream os = null;
 			try {
 				String originalFilename = multipartFile.getOriginalFilename();
-				String pathName = new StringBuilder(path).append("/").append(UUID.randomUUID().toString())
+				String pathName = new StringBuilder(path).append(UUID.randomUUID().toString())
 						.append(originalFilename.substring(originalFilename.lastIndexOf("."))).toString();
-
 				log.info("写入文件:[{}], 文件大小:[{}], 文件位置:[{}]", multipartFile.getOriginalFilename(),
 						multipartFile.getSize(), pathName);
 				os = new FileOutputStream(new File(pathName));

@@ -29,4 +29,7 @@ public interface FileInfoMapper {
 	/** 根据token获取文件信息 */
 	FileInfo getByToken(@Param("token") String token);
 
+	/** 根据path获取文件信息 */
+	FileInfo getByPath(@Param("path") String path);
+
 }

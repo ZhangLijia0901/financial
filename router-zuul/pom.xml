@@ -22,4 +22,18 @@
 		</dependency>
 
 	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<fork>true</fork>
+					<useTestClasspath>false</useTestClasspath>
+				</configuration>
+			</plugin>
+		</plugins>
+		<finalName>zuul</finalName>
+	</build>
 </project>
