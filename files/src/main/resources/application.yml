@@ -1,8 +1,8 @@
 logging:
   level:
     root: info
-    com.financial: debug
-    org.thymeleaf: debug
+    com.financial: info
+    org.thymeleaf: info
 spring:
   application:
     name: fin-files
@@ -11,6 +11,7 @@ spring:
     url: jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&characterEncoding=utf-8
     username: root
     password: x5
+    
   thymeleaf:
     cache: false
     encoding: UTF-8
@@ -28,6 +29,8 @@ spring:
 #      defaultZone: http://127.0.0.1:9000/eureka/
 server:
   port: 9006
+  tomcat:
+    max-threads: 20
 files:
   path: F:/files
 mapper:

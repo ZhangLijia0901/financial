@@ -15,6 +15,8 @@ import com.financial.common.controller.BaseController;
 import com.financial.common.controller.BaseController.MAPPING_URL;
 import com.financial.files.service.FileTreeSerice;
 
+import lombok.extern.slf4j.Slf4j;
+
 /**
  * 
  * *文件目录结构 Controller
@@ -24,6 +26,7 @@ import com.financial.files.service.FileTreeSerice;
  */
 @Controller
 @RequestMapping(value = { MAPPING_URL.FILE_DIR })
+@Slf4j
 public class FileTreeController extends BaseController {
 
 	@Value("${files.path}")
@@ -35,9 +38,29 @@ public class FileTreeController extends BaseController {
 	@GetMapping(MAPPING_URL.ALL)
 	@ResponseBody
 	public CommonResponse fileTree(HttpServletRequest request, HttpServletResponse response) {
-		String currentPath = request.getRequestURI().replaceFirst(MAPPING_URL.FILE_DIR, "");
-		return fileTreeSerice.getFileListByRootPath(filePath, currentPath);
 
+		long startTime = System.currentTimeMillis();
+
+		String currentPath = request.getRequestURI().replaceFirst(MAPPING_URL.FILE_DIR, "");
+		CommonResponse commonResponse = fileTreeSerice.getFileListByRootPath(filePath, currentPath);
+		
+		try {
+			Thread.sleep(1500);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		long endTime = System.currentTimeMillis();
+		log.info("耗时： [{} ms]", (endTime - startTime));
+		return commonResponse;
+
+	}
+	
+	@GetMapping("/files")
+	@ResponseBody
+	public String fi() {
+		return new FileHystrixCommand(fileTreeSerice).execute();
 	}
 
 }
