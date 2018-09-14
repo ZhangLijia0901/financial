@@ -14,7 +14,6 @@ public class FileUploadConfig {
 		MultipartConfigFactory factory = new MultipartConfigFactory();
 
 		return factory.createMultipartConfig();
-
 	}
 
 }

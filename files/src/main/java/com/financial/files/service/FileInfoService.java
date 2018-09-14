@@ -23,14 +23,21 @@ public class FileInfoService {
 	@Resource
 	private FileInfoMapper fileInfoMapper;// 文件信息mapper
 
+	/**
+	 * 
+	 * @param multipartFile 文件
+	 * @param pathName      路径名称
+	 * @param userId        用户名
+	 */
 	@Transactional(propagation = Propagation.REQUIRED)
-	public void addFileInfo(MultipartFile multipartFile, String pathName) {
+	public void addFileInfo(MultipartFile multipartFile, String pathName, Integer userId) {
 		FileInfo fileInfo = new FileInfo();
 		fileInfo.setToken(UUID.randomUUID().toString());// token
 		fileInfo.setFileSize(multipartFile.getSize());// 文件大小
 		fileInfo.setFileName(multipartFile.getOriginalFilename());// 原始名称
 		fileInfo.setPathName(pathName);// 文件路径
 		fileInfo.setUploadTime(new Date());
+		fileInfo.setUserId(userId);
 
 		log.debug("新增文件信息 : [{}]", JSON.toJSON(fileInfo));
 		fileInfoMapper.insert(fileInfo);

@@ -14,6 +14,7 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 
 import com.alibaba.druid.pool.DruidDataSource;
+import com.financial.common.Constants;
 
 @Configuration
 @MapperScan(basePackages = { MybatisConfig.MAPPER_PACKAGE })
@@ -21,7 +22,7 @@ public class MybatisConfig {
 
 	public final static String MAPPER_PACKAGE = "com.financial.files.mapper";
 
-	@Value("${mapper.location}")
+	@Value("${" + Constants.MAPPER_LOCATION + "}")
 	private String mapperLocation;
 
 	@Bean

@@ -26,6 +26,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.financial.common.controller.BaseController;
+import com.financial.common.controller.BaseController.MAPPING_URL;
 import com.financial.common.file.FileUtils;
 import com.financial.files.model.FileInfo;
 import com.financial.files.service.FileInfoService;
@@ -33,7 +34,7 @@ import com.financial.files.service.FileInfoService;
 import lombok.extern.slf4j.Slf4j;
 
 @Controller
-@RequestMapping("files")
+@RequestMapping(value = { MAPPING_URL.FILES })
 @Slf4j
 public class FilesController extends BaseController {
 
@@ -76,7 +77,8 @@ public class FilesController extends BaseController {
 				os.write(multipartFile.getBytes());
 				os.flush();
 
-				fileInfoService.addFileInfo(multipartFile, pathName);
+				// TODO userId 暂未设置
+				fileInfoService.addFileInfo(multipartFile, pathName, null);
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 			} catch (IOException e) {

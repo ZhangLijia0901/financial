@@ -7,11 +7,12 @@ import org.springframework.context.annotation.Configuration;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.alibaba.fastjson.support.config.FastJsonConfig;
 import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
+import com.financial.common.Constants;
 
 @Configuration
 public class FastjsonConfig {
 
-	@Value("${fastjson.dateFormat}")
+	@Value("${" + Constants.FASTJSON_DATEFORMAT + "}")
 	private String dateFormat;
 
 	@Bean

@@ -11,6 +11,7 @@ public abstract class BaseController {
 
 	public static interface MAPPING_URL {
 		String FILE_DIR = "/fileDir";
+		String FILES = "files";
 
 		String LOGIN = "/login";
 		String REGISTER = "/register";

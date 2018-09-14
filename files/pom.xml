@@ -15,12 +15,10 @@
 		<dependency>
 			<groupId>com.financial</groupId>
 			<artifactId>deps</artifactId>
-			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.financial</groupId>
 			<artifactId>common</artifactId>
-			<version>${project.version}</version>
 		</dependency>
 
 		<dependency>
@@ -31,7 +29,6 @@
 		<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>druid</artifactId>
-			<version>${alibaba.druid.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -42,7 +39,6 @@
 		<dependency>
 			<groupId>org.mybatis.spring.boot</groupId>
 			<artifactId>mybatis-spring-boot-starter</artifactId>
-			<version>${boot.mybatis.version}</version>
 		</dependency>
 
 		<!-- thmleaf模板依赖. -->
@@ -51,11 +47,6 @@
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
 
-
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
-		</dependency>
 
 	</dependencies>
 
@@ -66,8 +57,10 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
+					<layout>ZIP</layout>
 					<fork>true</fork>
 					<useTestClasspath>false</useTestClasspath>
+					<mainClass>com.financial.files.app.App</mainClass>
 				</configuration>
 			</plugin>
 		</plugins>

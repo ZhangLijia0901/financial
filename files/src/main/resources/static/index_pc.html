@@ -3,14 +3,207 @@
 <head>
 <meta charset="UTF-8">
 <title>Index</title>
+
+<link rel="stylesheet" href="css/milligram.css">
+<link rel="stylesheet" href="css/layer.css">
+<style type="text/css">
+@media screen and ( max-width :1080px) {
+	.title-left {
+		width: 180px !important;
+	}
+	.padding-left {
+		padding-left: 180px !important;
+	}
+}
+
+.padding-left {
+	padding-left: 240px;
+}
+
+.title-left {
+	width: 240px;
+	position: absolute;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	background: #F4F4F4;
+	text-align: center;
+}
+
+.body-right {
+	top: 0;
+	bottom: 0;
+	width: 100%;
+	padding-top: 10px;
+}
+
+#directory_navigation span {
+	cursor: pointer;
+}
+
+#directory_navigation .no {
+	cursor: default;
+}
+
+#largePic_detail tr img{
+	width: 2.4em;
+    vertical-align: middle;
+}
+
+.item:hover,
+#files_show_list .largePicItem:hover { 
+	background-color: #f6f6f6;
+	cursor: pointer; 
+}
+
+.largePic{
+	position: absolute; 
+	top:0; 
+	right:2.4em; 
+	cursor: pointer;
+}
+.list{
+    position: absolute;
+    top: -0.6em;
+    right: 1.6em;
+    cursor: pointer;
+}
+.largePicItem {
+	width: 7.6em;
+    height: 8.4em;
+    float: left;
+    border-radius: 0.9em;
+	padding: 0.2em 0.5em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	position: relative;
+}
+.largePicItem img{
+	width: 5em;
+    vertical-align: middle;
+}
+.filename{
+	text-align:center; 
+	font-size: .9em;
+}
+#show_type:hover,
+#close_file:hover, 
+#add_file:hover,
+#submit_file:hover
+{ opacity: 0.8; }
+
+#close_file, #add_file, #submit_file{
+	width: 3.2em;
+	cursor: pointer;
+}
+</style>
 </head>
 <body>
-	<div>
-		<span>上传文件</span> <span> 目录</span>
+	<!--  -->
+	<!-- 	<header></header> -->
+
+	<div class="padding-left">
+		<div class="title-left">导航栏(保留)</div>
+		<div class="body-right">
+			<div style="padding: 0 10px; border-bottom: 1px solid #aaa;">
+				<button class="button-outline" id="upload_file">上&nbsp;传</button>
+				<button class="button-outline" id="new_folder">新建文件夹</button>
+			</div>
+			<div>
+				<div style="padding: 8px 25px; cursor: default; position: relative;">
+					<div id="directory_navigation"></div>
+					<div id="show_type" class="list"><img src="img/largePic.png" style="width: 4em;" /></div>
+				</div>
+			</div>
+			<div id ="largePic_detail" style="overflow-y: auto; height: calc(100vh - 6.7em);"></div>
+			<img class="display-none" src="img/list.png">
+		</div>
 	</div>
 
-	<div>名称</div>
+	<!-- 	<footer></footer> -->
 
-	<div>类容</div>
 </body>
+
+<!-- 导航目录 -->
+<script type="text/html" id="directoryNavigationTemp">
+	{{each data as val index}}
+		{{if index < data.length - 1 }}
+			<span meta="{{ val.uri }}">{{ val.name }}</span>
+			&nbsp;&gt;&nbsp;
+		{{else}}
+			<span mete="{{ val.uri }}" class="no" >{{ val.name }}</span>
+		{{/if}}
+	{{/each}}
+</script>
+
+<!-- 大图 -->
+<script type="text/html" id="largePicTemp">
+	<div style="padding: 0 20px;">
+		{{each directories as directorie index }}
+			<div class="item largePicItem isFolder" meta = "{{directorie.name}}">
+				<div style="text-align: center; margin-top: 0.5em;"><img src="{{directorie.iocn}}"></div>
+				<div class="filename">{{ directorie.name }}</div>
+			</div>
+		{{/each }}
+		
+		{{each files as file index }}
+			<div class="item largePicItem isFile" meta = "{{file.name}}">
+				<div style="text-align: center; margin-top: 0.5em;"><img src="{{file.iocn}}"></div>
+				<div class="filename">{{ file.name }}</div>
+			</div>
+		{{/each }}
+	</div>
+</script>
+<!-- 详情 -->
+<script type="text/html" id="detailTemp">
+	<table style="padding: 0 20px;">
+		<thead>
+			<tr>
+				<th>名称</th>
+				<th>最后修改时间</th>
+				<th>大小</th>
+			</tr>
+		</thead>
+		<tbody>
+			{{each directories as directorie index }}
+				<tr meta = "{{directorie.name}}" class="item isFolder">
+					<td> <img src="{{directorie.iocn}}"> {{ directorie.name }}</td>
+					<td>{{ directorie.lastUpdateTime}}</td>
+					<td>文件夹</td>
+				</tr>
+			{{/each }}
+			
+			{{each files as file index }}
+				<tr meta = "{{file.name}}" class="item isFile">
+					<td>  <img src="{{file.iocn}}"> {{ file.name }}</td>
+					<td>{{ file.lastUpdateTime}}</td>
+					<td>{{ file.size }}</td>
+				</tr>
+			{{/each }}
+	</tbody>
+</table>
+</script>
+
+<!-- 上传文件 -->
+<script type="text/html" id="uploadTemp">
+	<div style="padding: 0; margin: 12px 24px; border: 2px solid #cfcfcf; border-radius: 12px; ">
+		<div style="padding: 8px 25px; position: relative; border-bottom: 2px solid #cfcfcf; border-radius: 12px;">
+			<div style="display: inline-block;" ><img src="img/add_file.png" id="add_file" title="添加文件" /></div>
+			<div style="width: 3.2em; position: absolute; top: 8px; left: 50%; margin-left: -1.6em;" ><img src="img/submit_file.png" id="submit_file" title="提交文件" /></div>
+			<div style="position: absolute; top: 8px; right: 25px;"><img id="close_file" src="img/close.png" title="关闭" /></div>
+		</div>
+			<div id="files_show_list" style="overflow-y:auto; height:calc(100vh - 13.4em);padding: 5px 10px;"></div>
+			<div id="files_hide_list" style="display: none;"></div>
+	</div>
+</script>
+
+<script type="text/javascript" src="js/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="js/template-web.js"></script>
+<script type="text/javascript" src="js/index_pc.js"></script>
+<script type="text/javascript" src="js/layer.js"></script>
+
+
+<script type="text/javascript">
+	
+</script>
 </html>

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -14,8 +15,6 @@ import com.financial.common.bean.response.CommonResponse;
 import com.financial.common.controller.BaseController;
 import com.financial.common.controller.BaseController.MAPPING_URL;
 import com.financial.files.service.FileTreeSerice;
-
-import lombok.extern.slf4j.Slf4j;
 
 /**
  * 
@@ -26,7 +25,6 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Controller
 @RequestMapping(value = { MAPPING_URL.FILE_DIR })
-@Slf4j
 public class FileTreeController extends BaseController {
 
 	@Value("${files.path}")
@@ -39,28 +37,22 @@ public class FileTreeController extends BaseController {
 	@ResponseBody
 	public CommonResponse fileTree(HttpServletRequest request, HttpServletResponse response) {
 
-		long startTime = System.currentTimeMillis();
-
 		String currentPath = request.getRequestURI().replaceFirst(MAPPING_URL.FILE_DIR, "");
 		CommonResponse commonResponse = fileTreeSerice.getFileListByRootPath(filePath, currentPath);
 		
-		try {
-			Thread.sleep(1500);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		long endTime = System.currentTimeMillis();
-		log.info("耗时： [{} ms]", (endTime - startTime));
 		return commonResponse;
 
 	}
-	
-	@GetMapping("/files")
+
+	@PostMapping(MAPPING_URL.ALL)
 	@ResponseBody
-	public String fi() {
-		return new FileHystrixCommand(fileTreeSerice).execute();
+	public CommonResponse post(HttpServletRequest request, HttpServletResponse response) {
+		
+		String currentPath = request.getRequestURI().replaceFirst(MAPPING_URL.FILE_DIR, "");
+		CommonResponse commonResponse = fileTreeSerice.createFolder(filePath, currentPath);
+		
+		return commonResponse;
 	}
 
+//	return new FileHystrixCommand(fileTreeSerice).execute();
 }

@@ -19,7 +19,9 @@
 		<dependency>
 			<groupId>com.financial</groupId>
 			<artifactId>deps</artifactId>
-			<version>${project.version}</version>
 		</dependency>
+
+		
+		
 	</dependencies>
 </project>

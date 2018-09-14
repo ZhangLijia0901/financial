@@ -1,41 +1,18 @@
-logging:
-  level:
-    root: info
-    com.financial: info
-    org.thymeleaf: info
 spring:
   application:
     name: fin-files
+  profiles:
+    active:
+    - common
+    - eureka
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&characterEncoding=utf-8
     username: root
     password: x5
-    
-  thymeleaf:
-    cache: false
-    encoding: UTF-8
-    prefix: classpath:/static/
-    suffix: .html
-    mode: HTML5
-    
-    
-#eureka:
-#  instance:
-#    lease-expiration-duration-in-seconds: 30
-#    lease-renewal-interval-in-seconds: 10
-#  client:
-#    service-url:
-#      defaultZone: http://127.0.0.1:9000/eureka/
 server:
   port: 9006
   tomcat:
     max-threads: 20
 files:
   path: F:/files
-mapper:
-  location: classpath*:/mapper/*.xml
-fastjson:
-  dateFormat: yyyy-MM-dd HH:mm:ss
-  
-  

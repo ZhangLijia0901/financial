@@ -18,6 +18,9 @@ public abstract class Constants {
 	public static final String PRIVATE_KEY = "privateKey";
 	public static final String PUBLIC_KEY = "publicKey";
 
+	public static final String MAPPER_LOCATION = "custom.mapper.location";
+	public static final String FASTJSON_DATEFORMAT = "custom.fastjson.dateFormat";
+
 	static {
 		AUTH_TYPE_MESSAGE.put(AUTH_TYPE.MOBILE, "手机号");
 		AUTH_TYPE_MESSAGE.put(AUTH_TYPE.EMAIL, "邮箱号");

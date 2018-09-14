@@ -1,8 +1,23 @@
-package java.util;
+package java.utils;
 
+import java.util.AbstractList;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.BitSet;
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.ConcurrentModificationException;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
+import java.util.NoSuchElementException;
+import java.util.Objects;
+import java.util.RandomAccess;
+import java.util.Spliterator;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 import java.util.function.UnaryOperator;
+//import java.util.*;
 
 /**
  * 
@@ -268,8 +283,8 @@ public class JdkArrayList<E> extends AbstractList<E> implements List<E>, RandomA
 	public Object clone() {
 		try {
 			ArrayList<?> v = (ArrayList<?>) super.clone();
-			v.elementData = Arrays.copyOf(elementData, size);
-			v.modCount = 0;
+//			v.elementData = Arrays.copyOf(elementData, size);
+//			v.modCount = 0;
 			return v;
 		} catch (CloneNotSupportedException e) {
 			// this shouldn't happen, since we are Cloneable
@@ -971,7 +986,7 @@ public class JdkArrayList<E> extends AbstractList<E> implements List<E>, RandomA
 			rangeCheckForAdd(index);
 			checkForComodification();
 			parent.add(parentOffset + index, e);
-			this.modCount = parent.modCount;
+//			this.modCount = parent.modCount;
 			this.size++;
 		}
 
@@ -979,15 +994,15 @@ public class JdkArrayList<E> extends AbstractList<E> implements List<E>, RandomA
 			rangeCheck(index);
 			checkForComodification();
 			E result = parent.remove(parentOffset + index);
-			this.modCount = parent.modCount;
+//			this.modCount = parent.modCount;
 			this.size--;
 			return result;
 		}
 
 		protected void removeRange(int fromIndex, int toIndex) {
 			checkForComodification();
-			parent.removeRange(parentOffset + fromIndex, parentOffset + toIndex);
-			this.modCount = parent.modCount;
+//			parent.removeRange(parentOffset + fromIndex, parentOffset + toIndex);
+//			this.modCount = parent.modCount;
 			this.size -= toIndex - fromIndex;
 		}
 
@@ -1003,7 +1018,7 @@ public class JdkArrayList<E> extends AbstractList<E> implements List<E>, RandomA
 
 			checkForComodification();
 			parent.addAll(parentOffset + index, c);
-			this.modCount = parent.modCount;
+//			this.modCount = parent.modCount;
 			this.size += cSize;
 			return true;
 		}
