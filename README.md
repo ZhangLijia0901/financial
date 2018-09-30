@@ -9,6 +9,7 @@
     
     用户(user)        9010
     用户
+        登录授权配置(login_auth_config)
         用户基本信息(user)
         用户授权信息(user_auth)
         用户登录记录(user_login)

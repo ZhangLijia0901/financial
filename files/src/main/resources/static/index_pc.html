@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Index</title>
+<title>文件服务器</title>
 
 <link rel="stylesheet" href="css/milligram.css">
 <link rel="stylesheet" href="css/layer.css">
@@ -147,7 +147,7 @@
 		{{/each }}
 		
 		{{each files as file index }}
-			<div class="item largePicItem isFile" meta = "{{file.name}}">
+			<div class="item largePicItem isFile" meta = "{{file.name}}" token="{{file.token}}">
 				<div style="text-align: center; margin-top: 0.5em;"><img src="{{file.iocn}}"></div>
 				<div class="filename">{{ file.name }}</div>
 			</div>
@@ -174,7 +174,7 @@
 			{{/each }}
 			
 			{{each files as file index }}
-				<tr meta = "{{file.name}}" class="item isFile">
+				<tr meta = "{{file.name}}" class="item isFile" token="{{file.token}}">
 					<td>  <img src="{{file.iocn}}"> {{ file.name }}</td>
 					<td>{{ file.lastUpdateTime}}</td>
 					<td>{{ file.size }}</td>
@@ -199,6 +199,7 @@
 
 <script type="text/javascript" src="js/jquery-3.3.1.js"></script>
 <script type="text/javascript" src="js/template-web.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
 <script type="text/javascript" src="js/index_pc.js"></script>
 <script type="text/javascript" src="js/layer.js"></script>
 

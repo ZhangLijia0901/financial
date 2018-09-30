@@ -1,6 +1,6 @@
 package ext.util;
 
-import ext.spring.boot.BootStart.BootTomcat;
+//import ext.spring.boot.BootStart.BootTomcat;
 
 //import redis.clients.jedis.Jedis;
 
@@ -68,10 +68,10 @@ public class LikedOrded {
 //		beanFactory.scan("test.test");
 //		System.err.println();
 
-		BootTomcat tomcat = new BootTomcat();
+//		BootTomcat tomcat = new BootTomcat();
 //		BootJetty jetty = new BootJetty();
 //		jetty.start();
-		tomcat.start();
+//		tomcat.start();
 
 //		jedis.del("lock");
 

@@ -1,0 +1,19 @@
+{
+	"properties": [
+		{
+			"name": "custom.fastjson.date-format",
+			"type": "java.lang.String",
+			"description": "fastjson 日期格式"
+		},
+		{
+			"name": "custom.mapper.location",
+			"type": "java.lang.String",
+			"description": "mybatis mapper 文件路径"
+		},
+		{
+			"name": "custom.controller-log.enable",
+			"type": "java.lang.String",
+			"description": "controller日志启用"
+		}
+	]
+}

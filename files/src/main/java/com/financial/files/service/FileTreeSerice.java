@@ -101,13 +101,21 @@ public class FileTreeSerice {
 			fileInf.setName(fileInfo == null ? file.getName() : fileInfo.getFileName());
 			fileInf.setLastUpdateTime(new Date(file.lastModified()));
 			fileInf.setSize(parseSize(file.length()));
+			fileInf.setToken(fileInfo.getToken());
 
 			fileInfs.add(fileInf);
 		});
 		return fileInfs;
 	}
 
-	static Map<Integer, String> SIZE = Map.of(0, "B", 1, "KB", 2, "MB", 3, "GB", 4, "TB");
+	static Map<Integer, String> SIZE =new HashMap<>();
+	static {
+		SIZE.put(0, "B");
+		SIZE.put(1, "KB");
+		SIZE.put(2, "MB");
+		SIZE.put(3, "GB");
+		SIZE.put(4, "TB");
+	}
 
 	public String parseSize(long size) {
 		int i = 0;
@@ -125,6 +133,8 @@ public class FileTreeSerice {
 		private String iocn;// 图标
 
 		private String name;// 名称
+		
+		private String token;//标识
 
 		public void setName(String name) {
 			this.name = name;

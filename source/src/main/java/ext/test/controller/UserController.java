@@ -1,11 +1,6 @@
 package ext.test.controller;
 
-import java.io.PrintWriter;
 import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-
-import com.alibaba.fastjson.JSON;
 
 import ext.spring.bean.Autowire;
 import ext.spring.mvc.Controller;
@@ -24,12 +19,12 @@ public class UserController {
 		return this.userService.userList();
 	}
 
-	@RequestMapping("one")
-	public void one(PrintWriter out, HttpServletRequest req) {
-		out.write(JSON.toJSONString(this.userService.getUser(req.getParameter("id"))));
-		out.flush();
-		out.close();
-
-	}
+//	@RequestMapping("one")
+//	public void one(PrintWriter out, HttpServletRequest req) {
+//		out.write(JSON.toJSONString(this.userService.getUser(req.getParameter("id"))));
+//		out.flush();
+//		out.close();
+//
+//	}
 
 }

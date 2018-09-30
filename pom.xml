@@ -12,11 +12,11 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<!-- <version>1.5.6.RELEASE</version> -->
-		<version>2.0.0.RC2</version>
+		<version>2.0.5.RELEASE</version>
 	</parent>
 
 	<properties>
-		<java.version>9</java.version>
+		<java.version>11</java.version>
 		<project.version>0.0.1-SNAPSHOT</project.version>
 		<boot.admin.version>1.5.6</boot.admin.version>
 		<alibaba.druid.version>1.0.25</alibaba.druid.version>
@@ -36,15 +36,10 @@
 				<!-- <version>Camden.SR5</version> -->
 				<!-- <version>Dalston.SR5</version> -->
 				<!-- <version>Edgware.RELEASE</version> -->
-				<version>Finchley.RC2</version>
+				<version>Finchley.RELEASE</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
-
-
-
-
-
 
 
 
@@ -89,6 +84,12 @@
 			<dependency>
 				<groupId>org.springframework.cloud</groupId>
 				<artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
+				<version>${spring.cloud.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-mobile</artifactId>
 				<version>${spring.cloud.version}</version>
 			</dependency>
 

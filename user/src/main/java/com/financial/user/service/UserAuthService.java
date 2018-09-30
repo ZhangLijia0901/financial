@@ -1,21 +1,28 @@
 package com.financial.user.service;
 
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Service;
+
+import com.financial.user.mapper.UserAuthMapper;
 import com.financial.user.model.UserAuth;
 
-/**
- * 
- * @Description: 用户授权Service
- * @author: 张礼佳
- * @date: 2018年5月4日 下午1:37:39
- */
-public interface UserAuthService {
+@Service("userAuthService")
+public class UserAuthService{
 
-	/** 添加用户授权信息 */
-	void addUserAuth(UserAuth userAuth);
+	@Resource
+	private UserAuthMapper userAuthMapper;
 
-	/** 修改用户授权信息 */
-	void modifyUserAuth(UserAuth userAuth);
+	public void addUserAuth(UserAuth userAuth) {
+		userAuthMapper.insert(userAuth);
+	}
 
-	/** 根据唯一标识、授权码获取授权信息 */
-	UserAuth getByIdentifier(String identifier, String credential);
+	public void modifyUserAuth(UserAuth userAuth) {
+		userAuthMapper.updateByPrimaryKeySelective(userAuth);
+	}
+
+	public UserAuth getByIdentifier(String identifier, String credential) {
+		return null;
+	}
+
 }

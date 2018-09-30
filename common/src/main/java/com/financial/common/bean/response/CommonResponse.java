@@ -2,7 +2,6 @@ package com.financial.common.bean.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.RequiredArgsConstructor;
 
 /**
  * 
@@ -12,7 +11,6 @@ import lombok.RequiredArgsConstructor;
  */
 @Data
 @AllArgsConstructor
-@RequiredArgsConstructor
 public class CommonResponse {
 
 	public static String SUCCESS_CODE = "0000";
@@ -24,6 +22,8 @@ public class CommonResponse {
 	private String respMsg = SUCCESS_MSG;
 
 	private Object data;
+	
+	public CommonResponse() {}
 
 	public CommonResponse(String respCode, String respMsg) {
 		this.respCode = respCode;

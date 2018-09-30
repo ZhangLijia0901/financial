@@ -33,7 +33,9 @@ public class HttpRequestUtils {
 	}
 
 	public enum UserAgent {
-		ALI_PAY(AUTH_TYPE.ALIPAY, "alipay"), WE_CHAT(AUTH_TYPE.WECHAT, "micromessenger"), QQ(AUTH_TYPE.QQ, "qq"),
+		ALI_PAY(AUTH_TYPE.ALIPAY, "alipay"), 
+		WE_CHAT(AUTH_TYPE.WECHAT, "micromessenger"), 
+		QQ(AUTH_TYPE.QQ, "qq"),
 		UNKNOWN("", "");
 
 		private String authType;

@@ -1,0 +1,13 @@
+logging:
+  level:
+    root: debug
+
+server:
+  port: 9040
+spring:
+  application:
+    name: wechat
+wechat:
+  appId: wx86355b69b0af0b7c
+  appSecret: 39af27b8e647b599823a3089317f81b4
+  token: 0af0b7c

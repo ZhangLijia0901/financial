@@ -1,0 +1,19 @@
+logging:
+  level:
+    root: info
+    com.financial: debug
+    org.thymeleaf: info
+spring:
+  thymeleaf:
+    cache: false
+    encoding: UTF-8
+    prefix: classpath:/static/
+    suffix: .html
+    mode: HTML5
+custom:
+  mapper:
+    location: classpath*:/mapper/*.xml
+  fastjson:
+    dateFormat: yyyy-MM-dd HH:mm:ss
+  controllerLog:
+    enable: true

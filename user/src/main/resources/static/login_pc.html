@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>登录</title>
+
+<link rel="stylesheet" href="../css/milligram.css">
+<link rel="stylesheet" href="../css/layer.css">
+<style type="text/css">
+body {
+	background-color: #999;
+	/* 		background: url('') */
+}
+
+.login-border {
+	border-radius: 2em;
+	width: 24em;
+	height: 15em;
+	margin: auto; 
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	top: 0;
+}
+
+.opacity-layer{
+	background-color: #000;
+	opacity: 0.8;
+	z-index: -1;
+}
+.login-border .title{	
+    text-align: center;
+	padding: 0.6em;
+    border-bottom: 1px solid #fff;
+	font-weight: bold;
+	font-size: 1.2em;
+}
+
+.login-border .footer{	
+	line-height: 2.8em;
+	text-align: center;
+    border-top: 1px solid #fff;
+}
+.login-border .footer img{
+	vertical-align: middle;
+	width: 2em;
+	margin: 0 .5em;
+    cursor: pointer;
+}
+.login-border .footer img:hover{
+	opacity: 0.8;
+}
+
+.login-border .context{
+	height: 2em;
+	line-height: 2em;
+	margin-top: 0.4em;
+	position: relative;
+}
+
+.login-border .context .get-code{
+	position: absolute;
+    right: 2em;
+    top: 0;
+    font-size: 0.8em;
+    cursor: pointer;
+}
+
+.login-border .context .get-code:hover{
+	text-decoration: underline;
+	color: #9b4dca;
+}
+
+.login-border input[type='text']{
+	height: 2em;
+	padding: 0 1em;
+	width: 18em;
+	color: #fff;
+}
+
+.login-border span{
+	width: 3.5em;
+	display: inline-block;
+}
+
+.login-border button{
+	padding: 0;
+	height: 1.8em;
+	line-height: 1.8em;
+	width: 5em;
+	margin-left: 1em;
+	font-weight: normal;
+	background: transparent;
+	color: #606c76;
+	border: 0.1rem solid #fff;
+}
+.login-border button:hover{
+	color: #9b4dca;
+	border: 0.1rem solid #9b4dca;
+}
+
+
+</style>
+</head>
+<body>
+	<div>
+		<div class="login-border opacity-layer"></div>
+		<div class="login-border" id="login_frame">
+		</div>
+	</div>
+
+</body>
+
+<script type="text/html" id="passWordTemp">
+	<div class="title" meta="password">账密登录</div>
+	<div style="padding: 0.8em 2em">
+		<div class="context" style="margin-top: 0;">
+			<span>账号:</span>
+			<input type="text" name="login_name" placeholder="输入你的手机号/邮箱">
+		</div>
+		<div class="context">
+			<span>凭证:</span>
+			<input type="text" name="login_cert" placeholder="输入你的登录凭证">
+		</div>
+		<div class="context" style="text-align: center;">
+			<button style="margin-left: -0.5em;" id="btn_login">登录</button>
+			<button id="btn_register">注册</button>
+		</div>
+	</div>
+	<div class="footer">
+		<img src="../img/smscode.png" meta="smscodeTemp">
+		<img src="../img/email.png" meta="emailTemp">
+		<img src="../img/qq.png" meta="qq">
+		<img src="../img/wechat.png" meta="wechat">
+	</div>
+</script>
+<script type="text/html" id="smscodeTemp">
+	<div class="title" meta="sms">手机验证码登录</div>
+	<div style="padding: 0.8em 2em">
+		<div class="context" style="margin-top: 0;">
+			<span>手机号:</span>
+			<input type="text" name="login_name" placeholder="输入你的手机号">
+		</div>
+		<div class="context">
+			<span>验证码:</span>
+			<input type="text" name="login_cert" placeholder="输入你的验证码">
+			<div class="get-code">获取验证码</div>
+		</div>
+		<div class="context" style="text-align: center;">
+			<button style="margin-left: -0.5em;" id="btn_login">登录</button>
+			<button id="btn_register">注册</button>
+		</div>
+	</div>
+	<div class="footer">
+		<img src="../img/password.png" meta="passWordTemp">
+		<img src="../img/email.png" meta="emailTemp">
+		<img src="../img/qq.png" meta="qq">
+		<img src="../img/wechat.png" meta="wechat">
+	</div>
+
+</script>
+<script type="text/html" id="emailTemp">
+	<div class="title" meta="email">邮箱验证码登录</div>
+	<div style="padding: 0.8em 2em">
+		<div class="context" style="margin-top: 0;">
+			<span>邮箱:</span>
+			<input type="text" name="login_name" placeholder="输入你的邮箱">
+		</div>
+		<div class="context">
+			<span>验证码:</span>
+			<input type="text" name="login_cert" placeholder="输入你的验证码">
+			<div class="get-code">获取验证码</div>
+		</div>
+		<div class="context" style="text-align: center;">
+			<button style="margin-left: -0.5em;" id="btn_login">登录</button>
+			<button id="btn_register">注册</button>
+		</div>
+	</div>
+	<div class="footer">
+		<img src="../img/password.png" meta="passWordTemp">
+		<img src="../img/smscode.png" meta="smscodeTemp">
+		<img src="../img/qq.png" meta="qq">
+		<img src="../img/wechat.png" meta="wechat">
+	</div>
+
+</script>
+
+
+
+<script type="text/javascript" src="../js/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="../js/template-web.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript" src="../js/layer.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$('#login_frame').html(template('passWordTemp'));
+		$('#login_frame').on('click', 'img', function(){
+			var $this = $(this);
+			var meta = $this.attr('meta');
+			if(meta == 'qq'){
+				
+			}else if(meta == 'wechat'){
+				
+			}else{
+				$('#login_frame').html(template(meta));
+			}
+		});
+		
+	});
+
+</script>
+
+</html>
