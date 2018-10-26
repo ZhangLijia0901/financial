@@ -1,4 +1,4 @@
-package com.financial.files.config;
+package com.financial.common.config;
 
 import javax.sql.DataSource;
 
